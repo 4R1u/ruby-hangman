@@ -7,7 +7,7 @@ class Game
   def initialize(word)
     @word = word
     @guesses_left = 8
-    @state = '_' * word.size
+    @state = '_' * word.length
     @wrong_letters = ''
   end
 end
