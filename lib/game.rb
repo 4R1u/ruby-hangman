@@ -8,6 +8,6 @@ class Game
     @word = word
     @guesses_left = 8
     @state = '_' * word.length
-    @wrong_letters = ''
+    @tried_letters = ''
   end
 end
