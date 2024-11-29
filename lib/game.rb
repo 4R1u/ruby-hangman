@@ -21,6 +21,6 @@ class Game
       @state[index] = letter if letter == char
     end
     @tried_letters += letter
-    nil
+    @guesses_left -= 1
   end
 end
