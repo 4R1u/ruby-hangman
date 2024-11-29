@@ -10,4 +10,16 @@ class Game
     @state = '_' * word.length
     @tried_letters = ''
   end
+
+  def attempt(letter)
+    return if @guesses_left.zero? ||
+              !(('A'..'Z').include?(letter) ||
+                ('a'..'z').include?(letter)) ||
+              @tried_letters.include?(letter)
+
+    @word.chars.each_with_index do |char, index|
+      @state[index] = letter if letter == char
+    end
+    @tried_letters << letter
+  end
 end
