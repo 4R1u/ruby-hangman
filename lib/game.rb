@@ -23,4 +23,16 @@ class Game
     @tried_letters += letter
     @guesses_left -= 1
   end
+
+  def over?
+    won? || lost?
+  end
+
+  def won?
+    !@state.include?('_')
+  end
+
+  def lost?
+    @state.include?('_') && @guesses_left.zero?
+  end
 end
