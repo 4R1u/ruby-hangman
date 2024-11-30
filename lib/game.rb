@@ -11,6 +11,11 @@ class Game
     @tried_letters = ''
   end
 
+  def attempt_word(word)
+    @state = word if @guesses_left.positive? && word == @word
+    @guesses_left -= 1
+  end
+
   def attempt_letter(letter)
     return if @guesses_left.zero? ||
               !(('A'..'Z').include?(letter) ||
