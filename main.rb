@@ -11,7 +11,7 @@ end
 
 game = Game.new(words.sample)
 until game.over?
-  game.attempt_letter(gets.chomp)
+  game.attempt(gets.chomp)
   puts game.state
   puts game.tried_letters
 end
