@@ -35,6 +35,7 @@ class Game
 
   def attempt_word(word)
     @state = word if @guesses_left.positive? && word == @word
+    @tried_strings.push(word)
     @guesses_left -= 1
   end
 
@@ -42,7 +43,7 @@ class Game
     @word.chars.each_with_index do |char, index|
       @state[index] = letter if letter == char
     end
-    @tried_strings += letter
+    @tried_strings.push(letter)
     @guesses_left -= 1
   end
 end
