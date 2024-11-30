@@ -11,6 +11,14 @@ class Game
     @tried_letters = ''
   end
 
+  def attempt(string)
+    return if @guesses_left.zero? ||
+              @tried_letters.include?(string) ||
+              string.downcase.chars.all?(('a'..'z'))
+
+    string.length == 1 ? attempt_letter(string) : attempt_word(string)
+  end
+
   def over?
     won? || lost?
   end
@@ -31,11 +39,6 @@ class Game
   end
 
   def attempt_letter(letter)
-    return if @guesses_left.zero? ||
-              !(('A'..'Z').include?(letter) ||
-                ('a'..'z').include?(letter)) ||
-              @tried_letters.include?(letter)
-
     @word.chars.each_with_index do |char, index|
       @state[index] = letter if letter == char
     end
