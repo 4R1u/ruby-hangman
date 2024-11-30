@@ -21,6 +21,7 @@ class Game
     else
       attempt_word(string.downcase)
     end
+    puts @word if lost?
   end
 
   def over?
