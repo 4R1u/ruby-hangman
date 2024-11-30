@@ -11,7 +11,7 @@ class Game
     @tried_letters = ''
   end
 
-  def attempt(letter)
+  def attempt_letter(letter)
     return if @guesses_left.zero? ||
               !(('A'..'Z').include?(letter) ||
                 ('a'..'z').include?(letter)) ||
