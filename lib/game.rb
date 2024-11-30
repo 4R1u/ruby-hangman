@@ -14,7 +14,7 @@ class Game
   def attempt(string)
     return if @guesses_left.zero? ||
               @tried_strings.include?(string) ||
-              string.downcase.chars.all?(('a'..'z'))
+              !string.downcase.chars.all?(('a'..'z'))
 
     string.length == 1 ? attempt_letter(string) : attempt_word(string)
   end
