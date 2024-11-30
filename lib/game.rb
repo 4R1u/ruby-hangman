@@ -11,6 +11,20 @@ class Game
     @tried_letters = ''
   end
 
+  def over?
+    won? || lost?
+  end
+
+  def won?
+    !@state.include?('_')
+  end
+
+  def lost?
+    @state.include?('_') && @guesses_left.zero?
+  end
+
+  private
+
   def attempt_word(word)
     @state = word if @guesses_left.positive? && word == @word
     @guesses_left -= 1
@@ -27,17 +41,5 @@ class Game
     end
     @tried_letters += letter
     @guesses_left -= 1
-  end
-
-  def over?
-    won? || lost?
-  end
-
-  def won?
-    !@state.include?('_')
-  end
-
-  def lost?
-    @state.include?('_') && @guesses_left.zero?
   end
 end
