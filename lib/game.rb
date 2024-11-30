@@ -16,7 +16,11 @@ class Game
               @tried_strings.include?(string) ||
               !string.downcase.chars.all?(('a'..'z'))
 
-    string.length == 1 ? attempt_letter(string) : attempt_word(string)
+    if string.length == 1
+      attempt_letter(string.downcase)
+    else
+      attempt_word(string.downcase)
+    end
   end
 
   def over?
