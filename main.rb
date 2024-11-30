@@ -13,5 +13,5 @@ game = Game.new(words.sample)
 until game.over?
   game.attempt(gets.chomp)
   puts game.state
-  puts game.tried_letters
+  p game.tried_strings
 end

@@ -2,18 +2,18 @@
 
 # This represents an instance of the hangman game.
 class Game
-  attr_reader :guesses_left, :state, :tried_letters
+  attr_reader :guesses_left, :state, :tried_strings
 
   def initialize(word)
     @word = word
     @guesses_left = 8
     @state = '_' * word.length
-    @tried_letters = ''
+    @tried_strings = []
   end
 
   def attempt(string)
     return if @guesses_left.zero? ||
-              @tried_letters.include?(string) ||
+              @tried_strings.include?(string) ||
               string.downcase.chars.all?(('a'..'z'))
 
     string.length == 1 ? attempt_letter(string) : attempt_word(string)
@@ -42,7 +42,7 @@ class Game
     @word.chars.each_with_index do |char, index|
       @state[index] = letter if letter == char
     end
-    @tried_letters += letter
+    @tried_strings += letter
     @guesses_left -= 1
   end
 end
