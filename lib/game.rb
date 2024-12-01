@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require 'msgpack'
+
 # This represents an instance of the hangman game.
 class Game
   attr_reader :guesses_left, :state, :tried_strings
