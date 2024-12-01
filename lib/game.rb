@@ -35,6 +35,14 @@ class Game
                      })
   end
 
+  def self.from_msgpack(string)
+    data = MessagePack.load string
+    new(data['word'],
+        data['guesses_left'],
+        data['state'],
+        data['tried_strings'])
+  end
+
   def over?
     won? || lost?
   end
