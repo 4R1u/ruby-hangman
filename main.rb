@@ -18,6 +18,8 @@ end
 puts 'The game will choose a random word between 5 and 12 words long.'
 game = Game.new(words.sample)
 until game.over?
+  puts 'Would you like to save? (y)'
+  save_game(game) if gets.chomp == 'y'
   print "Enter a letter to see if it's in the word,"
   puts ' or a word itself you think is the answer.'
   game.attempt(gets.chomp)
