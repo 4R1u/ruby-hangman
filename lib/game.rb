@@ -26,6 +26,15 @@ class Game
     puts @word if lost?
   end
 
+  def to_msgpack
+    MessagePack.dump({
+                       word: @word,
+                       guesses_left: @guesses_left,
+                       state: @state,
+                       tried_strings: @tried_strings
+                     })
+  end
+
   def over?
     won? || lost?
   end
