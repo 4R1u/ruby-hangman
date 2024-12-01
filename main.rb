@@ -2,6 +2,12 @@
 
 require_relative 'lib/game'
 
+def save_game(game)
+  FileUtils.mkdir_p('games')
+  file_number = Dir.entries('games').map(&:to_i).max
+  File.open("games/#{file_number + 1}.hm", 'w') << game.to_msgpack
+end
+
 words_file = File.open('resources/google-10000-english-no-swears.txt')
 words = []
 while (line = words_file.gets)
