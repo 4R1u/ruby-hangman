@@ -8,7 +8,7 @@ class Game
 
   def initialize(word, guesses_left = 8, state = ('_' * word.length), tried_strings = [])
     @word = word
-    @guesses_left = guesses_left <= 8 ? guesses_left : 8
+    @guesses_left = [guesses_left, 8].min
     @state = state.length == word.length ? state : '_' * word.length
     @tried_strings = tried_strings.is_a?(Array) ? tried_strings : []
   end
