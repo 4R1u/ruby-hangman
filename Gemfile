@@ -5,3 +5,5 @@ source "https://rubygems.org"
 # gem "rails"
 
 gem "rubocop", "~> 1.69", require: false
+
+gem "msgpack", "~> 1.7"
