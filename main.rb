@@ -15,8 +15,24 @@ while (line = words_file.gets)
   words << line if (5..12).include?(line.length)
 end
 
-puts 'The game will choose a random word between 5 and 12 words long.'
-game = Game.new(words.sample)
+puts 'Do you want to load a game? (y)'
+if gets.chomp == 'y'
+  files = Dir.entries('games')
+  files.reject { |entry| entry[0] == '.' }.each do |file|
+    puts file
+    game = Game.from_msgpack(File.open("games/#{file}").gets)
+    puts "#{file[0..-4]}:"
+    puts "  #{game.state}"
+    puts "  #{game.guesses_left} guesses left"
+    puts "  Tried letters and words: #{game.tried_strings}"
+  end
+  choice = 'choice'
+  choice = gets.chomp until files.include? "#{choice}.hm"
+  game = Game.from_msgpack(File.open("games/#{choice}.hm"))
+else
+  game = Game.new(words.sample)
+end
+
 until game.over?
   puts 'Would you like to save? (y)'
   save_game(game) if gets.chomp == 'y'
