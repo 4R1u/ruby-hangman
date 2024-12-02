@@ -27,6 +27,7 @@ if gets.chomp == 'y'
     puts "  Tried letters and words: #{game.tried_strings}"
   end
   choice = 'choice'
+  puts "Enter the number of the game you'd like to save:"
   choice = gets.chomp until files.include? "#{choice}.hm"
   game = Game.from_msgpack(File.open("games/#{choice}.hm"))
 else
